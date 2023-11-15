@@ -11,7 +11,7 @@ class FavouriteCharactersViewModel: ObservableObject {
     typealias Dependencies = HasApiDependency
     
     @Published var isLoaded: Bool = false
-    @Published var characters: [SearchedCharacter] = []
+    @Published var characters: [Character] = []
     
     let apiService: ApiServicing
     

@@ -19,19 +19,19 @@ protocol HasApiDependency {
 
 
 protocol ApiServicing {
-    func makeRequest(path: String, query: [URLQueryItem]) async throws -> [SearchedCharacter]
-    func getPage(page: Int) async throws -> [SearchedCharacter]
-    func searchCharactersByName(query: String) async throws -> [SearchedCharacter]
-    func getCharactersByID(ids: [Int]) async throws -> [SearchedCharacter]
-    func character(id: Int) async throws -> SearchedCharacter
+    func makeRequest(query: [URLQueryItem]) async throws -> [Character]
+    func getPage(page: Int) async throws -> [Character]
+    func searchCharactersByName(query: String) async throws -> [Character]
+    func getCharactersByID(ids: [Int]) async throws -> [Character]
+    func character(id: Int) async throws -> Character
 }
 
 
 final class ApiService: ApiServicing {
     
-    func makeRequest(path: String = "", query: [URLQueryItem] = []) async throws -> [SearchedCharacter] {
+    func makeRequest(query: [URLQueryItem] = []) async throws -> [Character] {
         var components = URLComponents(
-            url: URL(string: "https://rickandmortyapi.com/api/character\(path)")!,
+            url: URL(string: "https://rickandmortyapi.com/api/character")!,
             resolvingAgainstBaseURL: false
         )
         if !query.isEmpty {
@@ -47,21 +47,21 @@ final class ApiService: ApiServicing {
         return decoded.results
     }
     
-    func getPage(page: Int = 1) async throws -> [SearchedCharacter] {
+    func getPage(page: Int = 1) async throws -> [Character] {
         let query = page > 1 ? [URLQueryItem(name: "page", value: String(page))] : []
         return try await makeRequest(query: query)
     }
     
-    func searchCharactersByName(query: String) async throws -> [SearchedCharacter] {
+    func searchCharactersByName(query: String) async throws -> [Character] {
         let queryItems: [URLQueryItem] = [
             .init(name: "name", value: query)
         ]
         return try await makeRequest(query: queryItems)
     }
     
-    func getCharactersByID(ids: [Int]) async throws -> [SearchedCharacter] {
-        try await withThrowingTaskGroup(of: SearchedCharacter.self) { group in
-            var characters: [SearchedCharacter] = []
+    func getCharactersByID(ids: [Int]) async throws -> [Character] {
+        try await withThrowingTaskGroup(of: Character.self) { group in
+            var characters: [Character] = []
             characters.reserveCapacity(ids.count)
             
             for id in ids {
@@ -83,13 +83,9 @@ final class ApiService: ApiServicing {
         }
     }
     
-    
-    func character(id: Int) async throws -> SearchedCharacter {
-        let characters: [SearchedCharacter] = try await makeRequest(path: "/\(id)")
-        if let ch = characters.first {
-            return ch
-        } else {
-            throw CharacterNotExistend(id: id)
-        }
+    func character(id: Int) async throws -> Character {
+        let request = URLRequest(url: URL(string: "https://rickandmortyapi.com/api/character/\(id)")!)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        return try JSONDecoder().decode(Character.self, from: data)
     }
 }
