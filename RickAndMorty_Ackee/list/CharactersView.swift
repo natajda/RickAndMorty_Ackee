@@ -19,12 +19,16 @@ struct CharactersView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            VStack(alignment: .leading) {
-                Text("Characters").headline1().foregroundColor(Color("foregroundsPrimary"))
-                    .padding(.horizontal, 30)
-            }
+            Text("Characters").headline1().foregroundColor(Color("foregroundsPrimary"))
+                .padding(.horizontal, 30)
+                .frame(alignment: .leading)
             if (!viewModel.isLoaded) {
                 ProgressView()
+                    .frame(minWidth: 0,
+                            maxWidth: .infinity,
+                            minHeight: 0,
+                            maxHeight: .infinity,
+                            alignment: .center)
                     .progressViewStyle(.circular)
                     .task {
                         await viewModel.fetchFirstPage()
@@ -73,7 +77,13 @@ struct CharactersView: View {
                     }
                 }
             }
+            Spacer()
         }.background(Color("backgroundsPrimary"))
+            .frame(minWidth: 0,
+                   maxWidth: .infinity,
+                   minHeight: 0,
+                   maxHeight: .infinity,
+                   alignment: .topLeading)
     }
 }
 

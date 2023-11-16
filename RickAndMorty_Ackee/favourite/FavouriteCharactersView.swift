@@ -18,6 +18,7 @@ struct FavouriteCharactersView: View {
         VStack(alignment: .leading) {
             Text("Favorites").headline1().foregroundColor(Color("foregroundsPrimary"))
                 .padding(.horizontal, 20)
+                .frame(alignment: .leading)
             if (!viewModel.isLoaded && !viewModel.favorites.isEmpty) {
                 ProgressView()
                     .progressViewStyle(.circular)
@@ -29,7 +30,12 @@ struct FavouriteCharactersView: View {
                     if viewModel.favorites.isEmpty {
                         VStack(alignment: .center) {
                             Text("No favorites yet").largeP().foregroundColor(Color("foregroundsTertiary"))
-                        }
+                        }.background(Color("backgroundsPrimary"))
+                            .frame(minWidth: 0,
+                                   maxWidth: .infinity,
+                                   minHeight: 0,
+                                   maxHeight: .infinity,
+                                   alignment: .center)
                     } else {
                         ScrollView {
                             LazyVStack {
@@ -49,7 +55,13 @@ struct FavouriteCharactersView: View {
                     }
                 }
             }
+            Spacer()
         }.background(Color("backgroundsPrimary"))
+            .frame(minWidth: 0,
+                   maxWidth: .infinity,
+                   minHeight: 0,
+                   maxHeight: .infinity,
+                   alignment: .topLeading)
         
     }
 }
