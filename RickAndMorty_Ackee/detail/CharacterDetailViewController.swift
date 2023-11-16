@@ -29,8 +29,12 @@ final class CharacterDetailViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        let rootView = CharacterDetailView(viewModel: self.viewModel)
+        let rootView = CharacterDetailView(viewModel: self.viewModel, onBackTapped: {self.onBackTapped()})
         let vc = UIHostingController(rootView: rootView)
         embedController(vc)
+    }
+    
+    func onBackTapped() {
+        navigationController?.popViewController(animated: true)
     }
 }

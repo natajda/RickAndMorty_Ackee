@@ -15,23 +15,41 @@ struct FavouriteCharactersView: View {
     let onCharacterTapped: (Character) -> Void
     
     var body: some View {
-        if (!viewModel.isLoaded) {
-            ProgressView()
-                .progressViewStyle(.circular)
-                .task {
-                    await viewModel.fetchCharacters()
-                }
-        } else {
-            Group {
-                if viewModel.characters.isEmpty {
-//                    Text("No favorites yet").largeP().foregroundColor(Color("foregrounTertiary"))
-                } else {
-                    List(viewModel.characters) { ch in
-                        // TODO: 
-//                        Text(ch.character.name)
+        VStack(alignment: .leading) {
+            Text("Favorites").headline1().foregroundColor(Color("foregroundsPrimary"))
+                .padding(.horizontal, 20)
+            if (!viewModel.isLoaded && !viewModel.favorites.isEmpty) {
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .task {
+                        await viewModel.fetchCharacters()
+                    }
+            } else {
+                Group {
+                    if viewModel.favorites.isEmpty {
+                        VStack(alignment: .center) {
+                            Text("No favorites yet").largeP().foregroundColor(Color("foregroundsTertiary"))
+                        }
+                    } else {
+                        ScrollView {
+                            LazyVStack {
+                                ForEach(viewModel.characters) { character in
+                                    Button {
+                                        onCharacterTapped(character)
+                                    } label: {
+                                        CharacterListItemView(viewModel: CharacterListItemViewModel(character: character))
+                                    }
+                                }
+                            }
+                        }.onAppear {
+                            Task {
+                                await viewModel.fetchCharacters()
+                            }
+                        }
                     }
                 }
             }
-        }
+        }.background(Color("backgroundsPrimary"))
+        
     }
 }

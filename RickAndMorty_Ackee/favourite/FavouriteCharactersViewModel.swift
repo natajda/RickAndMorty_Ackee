@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class FavouriteCharactersViewModel: ObservableObject {
     typealias Dependencies = HasApiDependency
@@ -19,13 +20,25 @@ class FavouriteCharactersViewModel: ObservableObject {
         apiService = dependencies.apiService
     }
     
-    var ids: [Int] {
-        UserDefaults.standard.value(forKey: "characters") as? [Int] ?? []
+    @AppStorage("characters") var favoritesData: Data = Data()
+    
+    var favorites: [Int] {
+        get {
+            do {
+                return try JSONDecoder().decode([Int].self, from: favoritesData)
+            } catch {
+                return []
+            }
+        }
+        set {
+            favoritesData = try! JSONEncoder().encode(newValue)
+        }
     }
     
     @MainActor
     func fetchCharacters() async {
-        guard !ids.isEmpty else { return }
-        characters = try! await apiService.getCharactersByID(ids: ids)
+        guard !favorites.isEmpty else {return}
+        characters = try! await apiService.getCharactersByID(ids: favorites)
+        isLoaded = true
     }
 }

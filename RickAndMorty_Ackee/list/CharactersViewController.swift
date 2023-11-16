@@ -14,19 +14,30 @@ final class CharactersViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        let rootView = CharactersView(viewModel: self.viewModel)
+        view.backgroundColor = UIColor(named: "backgroundsPrimary")
+        
+        let rootView = CharactersView(viewModel: self.viewModel,
+                                      onCharacterTapped: { [weak self] character in
+            self?.onCharacterTapped(character)
+        }, onSearchTapped: {self.onSearchTapped()})
+        
         let vc = UIHostingController(rootView: rootView)
         embedController(vc)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func onCharacterTapped(_ ch: Character) {
+        let vc = CharacterDetailViewController(viewModel: CharacterDetailViewModel(character: ch))
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func onSearchTapped() {        
+        let vc = SearchViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
-//    @objc
-//    private func searchTapped() {
-//        let vc = SearchViewController()
-//        let navVC = UINavigationController(rootViewController: vc)
-//        present(navVC, animated: true)
-//    }
-//}

@@ -29,7 +29,9 @@
 		D703C7712B04C8130041CA25 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D703C76E2B04C8130041CA25 /* SearchView.swift */; };
 		D703C7722B04C8130041CA25 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D703C76F2B04C8130041CA25 /* SearchViewModel.swift */; };
 		D703C7742B04C81A0041CA25 /* UIViewController+EmbedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D703C7732B04C81A0041CA25 /* UIViewController+EmbedController.swift */; };
-		D703C7782B04CB620041CA25 /* FloatingNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D703C7772B04CB620041CA25 /* FloatingNavBarView.swift */; };
+		D76EFCD22B062DE000663AC8 /* CharacterListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EFCD12B062DE000663AC8 /* CharacterListItemView.swift */; };
+		D76EFCD42B06338100663AC8 /* CharacterListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EFCD32B06338100663AC8 /* CharacterListItemViewModel.swift */; };
+		D76EFCD92B0652A000663AC8 /* FavoriteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EFCD82B0652A000663AC8 /* FavoriteStorage.swift */; };
 		D774B3A22B04C52A006DAC4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D774B3A12B04C52A006DAC4A /* AppDelegate.swift */; };
 		D774B3AE2B04C533006DAC4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D774B3AC2B04C533006DAC4A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -57,7 +59,9 @@
 		D703C76E2B04C8130041CA25 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D703C76F2B04C8130041CA25 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		D703C7732B04C81A0041CA25 /* UIViewController+EmbedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+EmbedController.swift"; sourceTree = "<group>"; };
-		D703C7772B04CB620041CA25 /* FloatingNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingNavBarView.swift; sourceTree = "<group>"; };
+		D76EFCD12B062DE000663AC8 /* CharacterListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListItemView.swift; sourceTree = "<group>"; };
+		D76EFCD32B06338100663AC8 /* CharacterListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListItemViewModel.swift; sourceTree = "<group>"; };
+		D76EFCD82B0652A000663AC8 /* FavoriteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStorage.swift; sourceTree = "<group>"; };
 		D774B39E2B04C52A006DAC4A /* RickAndMorty_Ackee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty_Ackee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D774B3A12B04C52A006DAC4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D774B3AD2B04C533006DAC4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -88,9 +92,10 @@
 		D703C7462B04C7250041CA25 /* favourite */ = {
 			isa = PBXGroup;
 			children = (
-				D703C7472B04C7250041CA25 /* FavouriteCharactersViewModel.swift */,
-				D703C7482B04C7250041CA25 /* FavouriteCharactersViewController.swift */,
 				D703C7492B04C7250041CA25 /* FavouriteCharactersView.swift */,
+				D703C7482B04C7250041CA25 /* FavouriteCharactersViewController.swift */,
+				D703C7472B04C7250041CA25 /* FavouriteCharactersViewModel.swift */,
+				D76EFCD82B0652A000663AC8 /* FavoriteStorage.swift */,
 			);
 			name = favourite;
 			path = RickAndMorty_Ackee/favourite;
@@ -110,6 +115,7 @@
 		D703C75A2B04C7F60041CA25 /* list */ = {
 			isa = PBXGroup;
 			children = (
+				D76EFCD52B06338F00663AC8 /* item */,
 				D703C75B2B04C7F60041CA25 /* CharactersView.swift */,
 				D703C75C2B04C7F60041CA25 /* CharactersViewController.swift */,
 				D703C75D2B04C7F60041CA25 /* CharactersViewModel.swift */,
@@ -139,12 +145,13 @@
 			path = search;
 			sourceTree = "<group>";
 		};
-		D703C7792B04D2C80041CA25 /* navbar */ = {
+		D76EFCD52B06338F00663AC8 /* item */ = {
 			isa = PBXGroup;
 			children = (
-				D703C7772B04CB620041CA25 /* FloatingNavBarView.swift */,
+				D76EFCD12B062DE000663AC8 /* CharacterListItemView.swift */,
+				D76EFCD32B06338100663AC8 /* CharacterListItemViewModel.swift */,
 			);
-			path = navbar;
+			path = item;
 			sourceTree = "<group>";
 		};
 		D774B3952B04C52A006DAC4A = {
@@ -179,7 +186,6 @@
 				D703C7462B04C7250041CA25 /* favourite */,
 				D703C75A2B04C7F60041CA25 /* list */,
 				D703C74D2B04C72C0041CA25 /* fonts */,
-				D703C7792B04D2C80041CA25 /* navbar */,
 			);
 			path = RickAndMorty_Ackee;
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D76EFCD22B062DE000663AC8 /* CharacterListItemView.swift in Sources */,
 				D703C7712B04C8130041CA25 /* SearchView.swift in Sources */,
 				D703C76B2B04C80E0041CA25 /* RootViewController.swift in Sources */,
 				D703C74C2B04C7250041CA25 /* FavouriteCharactersView.swift in Sources */,
@@ -263,13 +270,14 @@
 				D703C7412B04C6DF0041CA25 /* CharacterDetailViewController.swift in Sources */,
 				D703C7722B04C8130041CA25 /* SearchViewModel.swift in Sources */,
 				D703C75E2B04C7F60041CA25 /* CharactersView.swift in Sources */,
+				D76EFCD42B06338100663AC8 /* CharacterListItemViewModel.swift in Sources */,
 				D703C7692B04C7FF0041CA25 /* ApiResponse.swift in Sources */,
+				D76EFCD92B0652A000663AC8 /* FavoriteStorage.swift in Sources */,
 				D703C7522B04C72C0041CA25 /* TextStyles.swift in Sources */,
 				D703C7602B04C7F60041CA25 /* CharactersViewModel.swift in Sources */,
 				D703C7432B04C6DF0041CA25 /* CharacterDetailViewModel.swift in Sources */,
 				D703C7662B04C7FF0041CA25 /* ApiService.swift in Sources */,
 				D774B3A22B04C52A006DAC4A /* AppDelegate.swift in Sources */,
-				D703C7782B04CB620041CA25 /* FloatingNavBarView.swift in Sources */,
 				D703C7702B04C8130041CA25 /* SearchViewController.swift in Sources */,
 				D703C7742B04C81A0041CA25 /* UIViewController+EmbedController.swift in Sources */,
 				D703C7672B04C7FF0041CA25 /* Character.swift in Sources */,

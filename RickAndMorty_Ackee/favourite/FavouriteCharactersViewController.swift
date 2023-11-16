@@ -16,6 +16,8 @@ final class FavouriteCharactersViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+        view.backgroundColor = UIColor(named: "backgroundsPrimary")
+        
         let rootView = FavouriteCharactersView(
             viewModel: self.viewModel, onCharacterTapped: { [weak self] character in
                 self?.onCharacterTapped(character)
@@ -24,6 +26,12 @@ final class FavouriteCharactersViewController: UIViewController {
         let vc = UIHostingController(rootView: rootView)
         embedController(vc)
     }
+    
+    override func viewDidLoad() {
+         super.viewDidLoad()
+
+        navigationController?.navigationBar.isHidden = true
+     }
     
     
     private func onCharacterTapped(_ character: Character) {

@@ -14,12 +14,16 @@ final class SearchViewController: UIViewController {
     override func loadView() {
         super.loadView()
 
-        let rootView = SearchView(viewModel: self.viewModel)
+        let rootView = SearchView(viewModel: self.viewModel, onCancelTapped: {self.onCancelTapped()})
         let vc = UIHostingController(rootView: rootView)
         embedController(vc)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func onCancelTapped() {
+        navigationController?.popViewController(animated: true)
     }
 }

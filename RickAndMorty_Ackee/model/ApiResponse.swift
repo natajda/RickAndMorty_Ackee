@@ -49,6 +49,6 @@ struct ApiResponse: Codable {
 struct Info: Codable {
     var count: Int
     var pages: Int
-    var next: String
+    var next: String?
     var prev: String?
 }

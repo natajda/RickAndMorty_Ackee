@@ -6,29 +6,43 @@
 //
 
 import Foundation
+import SwiftUI
 
 class CharacterDetailViewModel: ObservableObject {
     @Published var isFavorite = false
     
+    @AppStorage("characters") var favoritesData: Data = Data()
+    
     let character: Character
+    
+    var favorites: [Int] {
+        get {
+            do {
+                return try JSONDecoder().decode([Int].self, from: favoritesData)
+            } catch {
+                return []
+            }
+        }
+        set {
+            favoritesData = try! JSONEncoder().encode(newValue)
+        }
+    }
     
     init(character: Character) {
         self.character = character
+        checkFavorites()
     }
     
     func toggleFavorites() {
-        var characters = UserDefaults.standard.value(forKey: "characters") as? [Int] ?? []
-        if characters.contains(character.id) {
-            characters.removeAll { $0 == character.id }
+        if favorites.contains(character.id) {
+            favorites.removeAll { $0 == character.id }
         } else {
-            characters.append(character.id)
+            favorites.append(character.id)
         }
-        UserDefaults.standard.setValue(characters, forKey: "characters")
         checkFavorites()
     }
     
     func checkFavorites() {
-        let characters = UserDefaults.standard.value(forKey: "characters") as? [Int] ?? []
-        isFavorite = characters.contains(character.id)
+        isFavorite = favorites.contains(character.id)
     }
 }

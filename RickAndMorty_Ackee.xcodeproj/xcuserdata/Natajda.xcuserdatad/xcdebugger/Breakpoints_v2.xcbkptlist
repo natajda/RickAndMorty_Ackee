@@ -7,16 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F9DF0535-1334-4319-8897-D05B99552F55"
+            uuid = "08242014-AC8F-4C3B-9263-1B5B9CBC2156"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RickAndMorty_Ackee/list/CharactersViewModel.swift"
+            filePath = "RickAndMorty_Ackee/detail/CharacterDetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "fetchNextPage()"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "checkFavorites()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "08242014-AC8F-4C3B-9263-1B5B9CBC2156 - 23357e520880478e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty_Ackee.CharacterDetailViewModel.checkFavorites() -&gt; ()"
+                  moduleName = "RickAndMorty_Ackee"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Natajda/Desktop/RickAndMorty_Ackee/RickAndMorty_Ackee/detail/CharacterDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  uuid = "08242014-AC8F-4C3B-9263-1B5B9CBC2156 - 811e81bef00abc28"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty_Ackee.CharacterDetailViewModel.checkFavorites() -&gt; Swift.Bool"
+                  moduleName = "RickAndMorty_Ackee"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Natajda/Desktop/RickAndMorty_Ackee/RickAndMorty_Ackee/detail/CharacterDetailViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "65">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "28B6B4B8-CF77-4577-A1A7-0EECC2DB8F7C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMorty_Ackee/detail/CharacterDetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "toggleFavorites()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

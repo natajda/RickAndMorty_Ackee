@@ -33,11 +33,5 @@ final class CharactersViewModel: ObservableObject {
         page += 1
         let shows = try! await apiService.getPage(page: page)
         self.characters += shows
-    }
-    
-    func checkIsFavorite(id: Int) -> Bool {
-        let characters = UserDefaults.standard.value(forKey: "characters") as? [Int] ?? []
-        return characters.contains(id)
-    }
-    
+    }    
 }
