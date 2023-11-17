@@ -20,6 +20,7 @@ class FavouriteCharactersViewModel: ObservableObject {
         apiService = dependencies.apiService
     }
     
+    //duplicated
     @AppStorage("characters") var favoritesData: Data = Data()
     
     var favorites: [Int] {

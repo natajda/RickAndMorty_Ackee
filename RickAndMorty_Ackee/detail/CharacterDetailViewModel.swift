@@ -9,11 +9,12 @@ import Foundation
 import SwiftUI
 
 class CharacterDetailViewModel: ObservableObject {
+    let character: Character
+    
     @Published var isFavorite = false
     
+    //duplicated
     @AppStorage("characters") var favoritesData: Data = Data()
-    
-    let character: Character
     
     var favorites: [Int] {
         get {

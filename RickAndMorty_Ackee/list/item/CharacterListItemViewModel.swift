@@ -11,6 +11,7 @@ import SwiftUI
 class CharacterListItemViewModel: ObservableObject {
     let character: Character
     
+    //duplicated 
     @AppStorage("characters") var favoritesData: Data = Data()
     
     var favorites: [Int] {
