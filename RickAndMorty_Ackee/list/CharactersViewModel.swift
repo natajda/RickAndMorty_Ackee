@@ -20,18 +20,18 @@ final class CharactersViewModel: ObservableObject {
     init(dependencies: Dependencies) {
         apiService = dependencies.apiService
     }
-
+    
     @MainActor
     func fetchFirstPage() async {
         page = 1
         characters = try! await apiService.getPage(page: page)
         isLoaded = true
     }
-
+    
     @MainActor
     func fetchNextPage() async {
         page += 1
         let shows = try! await apiService.getPage(page: page)
         self.characters += shows
-    }    
+    }
 }

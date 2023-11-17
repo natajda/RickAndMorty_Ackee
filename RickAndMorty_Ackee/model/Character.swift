@@ -11,7 +11,7 @@ struct Character: Hashable, Codable {
     var id: Int
     var name: String
     var status : String
-    var type: String = "-"
+    var type: String
     var species: String
     var image: String
     

@@ -12,7 +12,11 @@ final class SearchViewModel: ObservableObject {
     
     @Published var characters: [Character] = []
     
+    @Published var allDisplayed: Bool = false
+    
     var searchText = ""
+    
+    private var page = 1
     
     private var searchTask: Task<Void, Error>?
     
@@ -24,6 +28,7 @@ final class SearchViewModel: ObservableObject {
     
     func searchTextChanged(_ text: String) {
         searchText = text
+        guard text != "" else { characters = []; return }
         searchTask?.cancel()
         searchTask = Task {
             try await Task.sleep(for: .seconds(0.3))
@@ -34,11 +39,21 @@ final class SearchViewModel: ObservableObject {
     @MainActor
     private func fetchCharacters(query: String) async {
         do {
-            characters = try await apiService.searchCharactersByName(query: query)
+            characters += try await apiService.searchCharactersByName(query: query)
         } catch {
             // Skip if the status of the task is cancelled (-999)
             guard (error as NSError).code != -999 else { return }
             print("[ERROR]", error.localizedDescription)
+        }
+    }
+    
+    @MainActor
+    func fetchNextPage() async {
+        page += 1
+        let before = characters.count
+        await self.fetchCharacters(query: searchText + "?page=\(page)")
+        if (before <= characters.count) {
+            allDisplayed = true
         }
     }
 }

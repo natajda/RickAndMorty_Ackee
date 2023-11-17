@@ -14,11 +14,13 @@ struct SearchView: View {
     
     let onCancelTapped: () -> Void
     
+    let onCharacterTapped: (Character) -> Void
+    
     var body: some View {
         
         VStack {
             HStack(alignment: .center) {
-                ZStack(alignment: .top) {
+                ZStack(alignment: .topLeading) {
                     Rectangle()
                         .frame(width: 300, height: 32)
                         .foregroundColor(Color("backgroundsSecondary"))
@@ -41,7 +43,20 @@ struct SearchView: View {
                             Text("Search character").mediumP().foregroundColor(Color("foregroundsSecondary"))
                         }
                         Spacer()
-                    }.padding(.leading, 35)
+                        
+                        if (!viewModel.searchText.isEmpty) {
+                            Button {
+                                viewModel.searchTextChanged("")
+                            } label: {
+                                Image("favorites_x-circle")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .scaledToFit()
+                                    .frame(width: 16, height: 16, alignment: .trailing)
+                                    .foregroundColor(Color("iconsPrimary"))
+                            }.padding(.trailing, 7)
+                        }
+                    }.padding(.leading, 25)
                         .padding(.top, 5)
                 }
                 
@@ -50,17 +65,42 @@ struct SearchView: View {
                 } label: {
                     Text("Cancel").mediumP().foregroundColor(Color("foregroundsPrimary"))
                     
-                }.padding(.trailing, 10)
-            }
+                }.padding(.trailing, 15)
+            }.background(Color("backgroundsPrimary"))
             
             if !viewModel.characters.isEmpty {
-                List(viewModel.characters) { ch in
-                    //TODO: zobrazovanie
+                ScrollView {
+                    LazyVStack {
+                        ForEach(viewModel.characters) { ch in
+                            Button {
+                                onCharacterTapped(ch)
+                            } label: {
+                                CharacterListItemView(viewModel: CharacterListItemViewModel(character: ch))
+                            }
+                        }
+                        
+                        if (!viewModel.allDisplayed) {
+                            ProgressView()
+                                .onAppear {
+                                    Task {
+                                        await viewModel.fetchNextPage()
+                                    }
+                                }
+                        }
+                    }
                 }
+            } else if (viewModel.characters.isEmpty && !viewModel.searchText.isEmpty) {
+                VStack(alignment: .center) {
+                    Text("No character found.").largeP().foregroundColor(Color("foregroundsTertiary"))
+                }.background(Color("backgroundsPrimary"))
+                    .frame(minWidth: 0,
+                           maxWidth: .infinity,
+                           minHeight: 0,
+                           maxHeight: .infinity,
+                           alignment: .center)
             }
             
             Spacer()
-        }
-        .edgesIgnoringSafeArea(.bottom)
+        }.background(Color("backgroundsPrimary"))
     }
 }

@@ -36,7 +36,7 @@ final class CharactersViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func onSearchTapped() {        
+    private func onSearchTapped() {
         let vc = SearchViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

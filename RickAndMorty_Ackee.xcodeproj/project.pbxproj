@@ -135,8 +135,8 @@
 		D703C76C2B04C8130041CA25 /* search */ = {
 			isa = PBXGroup;
 			children = (
-				D703C76D2B04C8130041CA25 /* SearchViewController.swift */,
 				D703C76E2B04C8130041CA25 /* SearchView.swift */,
+				D703C76D2B04C8130041CA25 /* SearchViewController.swift */,
 				D703C76F2B04C8130041CA25 /* SearchViewModel.swift */,
 			);
 			path = search;

@@ -25,10 +25,10 @@ struct CharactersView: View {
             if (!viewModel.isLoaded) {
                 ProgressView()
                     .frame(minWidth: 0,
-                            maxWidth: .infinity,
-                            minHeight: 0,
-                            maxHeight: .infinity,
-                            alignment: .center)
+                           maxWidth: .infinity,
+                           minHeight: 0,
+                           maxHeight: .infinity,
+                           alignment: .center)
                     .progressViewStyle(.circular)
                     .task {
                         await viewModel.fetchFirstPage()

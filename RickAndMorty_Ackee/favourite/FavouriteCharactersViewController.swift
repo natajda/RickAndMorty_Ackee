@@ -28,10 +28,10 @@ final class FavouriteCharactersViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-         super.viewDidLoad()
-
+        super.viewDidLoad()
+        
         navigationController?.navigationBar.isHidden = true
-     }
+    }
     
     
     private func onCharacterTapped(_ character: Character) {

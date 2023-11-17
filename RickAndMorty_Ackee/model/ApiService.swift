@@ -42,9 +42,13 @@ final class ApiService: ApiServicing {
         
         let request = URLRequest(url: url)
         
-        let (data, _) = try await URLSession.shared.data(for: request)
-        let decoded = try JSONDecoder().decode(ApiResponse.self, from: data)
-        return decoded.results
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let decoded = try JSONDecoder().decode(ApiResponse.self, from: data)
+            return decoded.results
+        } catch {
+            return []
+        }
     }
     
     func getPage(page: Int = 1) async throws -> [Character] {

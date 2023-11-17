@@ -94,7 +94,7 @@ struct CharacterDetailView: View {
             Text(text).smallP().foregroundColor(Color("foregroundsSecondary")).frame(width: 60, alignment: .leading)
                 .padding(.leading, 20)
             Spacer()
-            Text(value).headline3().foregroundColor(Color("foregroundsPrimary")).frame(width: 200, alignment: .leading)
+            Text(value.isEmpty ? "-" : value).headline3().foregroundColor(Color("foregroundsPrimary")).frame(width: 200, alignment: .leading)
                 .lineLimit(3)
         }.padding(.vertical, 5)
     }
