@@ -3,4 +3,101 @@
    uuid = "02AA0B76-7873-45AB-8E5B-859862954FB7"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72385CC7-8378-4A2C-8349-661E6E61EABF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMorty_AckeeTests/SearchCharactersTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "testCharactersSearchFetch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "910B5BFC-349C-4AC7-A354-99C2C4BDC184"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMorty_AckeeTests/SearchCharactersTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "testCharactersSearchFetch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1307F774-AF72-4C53-8D20-2FFC67233FD5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMorty_Ackee/search/SearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "fetchNextPage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1307F774-AF72-4C53-8D20-2FFC67233FD5 - a68cdec91fe72128"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty_Ackee.SearchViewModel.fetchNextPage() async -&gt; ()"
+                  moduleName = "RickAndMorty_Ackee"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Natajda/Desktop/RickAndMorty_Ackee/RickAndMorty_Ackee/search/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "115">
+               </Location>
+               <Location
+                  uuid = "1307F774-AF72-4C53-8D20-2FFC67233FD5 - 791f9684f4a46270"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for RickAndMorty_Ackee.SearchViewModel.fetchNextPage() async -&gt; ()"
+                  moduleName = "RickAndMorty_Ackee"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Natajda/Desktop/RickAndMorty_Ackee/RickAndMorty_Ackee/search/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "117">
+               </Location>
+               <Location
+                  uuid = "1307F774-AF72-4C53-8D20-2FFC67233FD5 - a68cdec91fe72128"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty_Ackee.SearchViewModel.fetchNextPage() async -&gt; ()"
+                  moduleName = "RickAndMorty_Ackee"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Natajda/Desktop/RickAndMorty_Ackee/RickAndMorty_Ackee/search/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "126">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 class CharacterListItemViewModel: ObservableObject {
+    typealias Dependencies = HasNoDependency
+    
     let character: Character
     
     //duplicated 

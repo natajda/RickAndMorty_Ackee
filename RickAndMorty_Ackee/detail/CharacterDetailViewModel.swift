@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 class CharacterDetailViewModel: ObservableObject {
+    typealias Dependencies = HasNoDependency
+    
     let character: Character
     
     @Published var isFavorite = false

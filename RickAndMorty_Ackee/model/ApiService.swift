@@ -21,7 +21,7 @@ protocol HasApiDependency {
 protocol ApiServicing {
     func makeRequest(query: [URLQueryItem]) async throws -> [Character]
     func getPage(page: Int) async throws -> [Character]
-    func searchCharactersByName(query: String) async throws -> [Character]
+    func searchCharactersByName(query: String, page: Int) async throws -> [Character]
     func getCharactersByID(ids: [Int]) async throws -> [Character]
     func character(id: Int) async throws -> Character
 }
@@ -56,9 +56,10 @@ final class ApiService: ApiServicing {
         return try await makeRequest(query: query)
     }
     
-    func searchCharactersByName(query: String) async throws -> [Character] {
+    func searchCharactersByName(query: String, page: Int = 1) async throws -> [Character] {
         let queryItems: [URLQueryItem] = [
-            .init(name: "name", value: query)
+            .init(name: "name", value: query),
+            .init(name: "page", value: "\(page)")
         ]
         return try await makeRequest(query: queryItems)
     }
